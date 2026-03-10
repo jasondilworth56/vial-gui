@@ -30,8 +30,24 @@ FunctionEnd
 ;--------------------------------
 ;General
 
+  !ifndef app_name
+    !define app_name "Vial"
+  !endif
+
+  !ifndef author
+    !define author "Vial"
+  !endif
+
+  !ifndef installer
+    !define installer "..\..\..\dist\VialSetup.exe"
+  !endif
+
+  !ifndef app_dir
+    !define app_dir "..\..\..\dist\${app_name}"
+  !endif
+
   Name "${app_name}"
-  OutFile "..\${installer}"
+  OutFile "${installer}"
 
 ;--------------------------------
 ;Interface Settings
@@ -67,7 +83,7 @@ FunctionEnd
   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${app_name}"
 Section
   SetOutPath "$InstDir"
-  File /r "..\${app_name}\*"
+  File /r "${app_dir}\*"
   WriteRegStr SHCTX "Software\${app_name}" "" $InstDir
   WriteUninstaller "$InstDir\uninstall.exe"
   CreateShortCut "$SMPROGRAMS\${app_name}.lnk" "$InstDir\${app_name}.exe"
@@ -100,6 +116,5 @@ Section "Uninstall"
 SectionEnd
 
 Function LaunchLink
-  !addplugindir "."
-  ShellExecAsUser::ShellExecAsUser "open" "$SMPROGRAMS\${app_name}.lnk"
+  ExecShell "open" "$SMPROGRAMS\${app_name}.lnk"
 FunctionEnd

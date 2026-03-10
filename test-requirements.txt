@@ -5,7 +5,7 @@ hidapi==0.15.0
 keyboard==0.13.5
 macholib==1.16.3
 packaging==26.0
-pefile==2024.8.26
+pefile==2023.2.7
 pyinstaller==6.16.0
 pyinstaller-hooks-contrib==2026.3
 PyQt5==5.15.11
@@ -13,6 +13,6 @@ PyQt5-sip==12.18.0
 pytest==8.4.2
 pytest-qt==4.5.0
 pytest-xvfb==3.1.1
-pywin32==306; sys_platform == 'win32'
-simpleeval==0.9.13
+pywin32==311; sys_platform == 'win32'
+simpleeval==1.0.3
 setuptools==80.10.2

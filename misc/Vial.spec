@@ -1,9 +1,21 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 from pathlib import Path
+import sys
 
 
 ROOT = Path(SPECPATH).resolve().parent
+WINDOWS_ICON = str(ROOT / "src/main/icons/Icon.ico")
+
+if sys.platform.startswith("win"):
+    EXE_ICON = [WINDOWS_ICON]
+else:
+    EXE_ICON = None
+
+if sys.platform == "darwin":
+    BUNDLE_ICON = None
+else:
+    BUNDLE_ICON = None
 
 a = Analysis(
     [str(ROOT / "src/main/python/main.py")],
@@ -41,7 +53,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=[str(ROOT / "src/main/icons/Icon.ico")],
+    icon=EXE_ICON,
 )
 coll = COLLECT(
     exe,
@@ -55,6 +67,6 @@ coll = COLLECT(
 app = BUNDLE(
     coll,
     name="Vial.app",
-    icon=str(ROOT / "src/main/icons/Icon.ico"),
+    icon=BUNDLE_ICON,
     bundle_identifier=None,
 )
