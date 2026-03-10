@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Vial
+Comment=Keyboard configurator
+Exec=Vial
+Icon=Vial
+Categories=Utility;
+Terminal=false
