@@ -12,3 +12,4 @@ PyQt5==5.15.11
 PyQt5-sip==12.18.0
 pywin32==306; sys_platform == 'win32'
 simpleeval==0.9.13
+setuptools==80.10.2

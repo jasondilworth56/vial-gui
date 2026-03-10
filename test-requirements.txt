@@ -15,3 +15,4 @@ pytest-qt==4.5.0
 pytest-xvfb==3.1.1
 pywin32==306; sys_platform == 'win32'
 simpleeval==0.9.13
+setuptools==80.10.2

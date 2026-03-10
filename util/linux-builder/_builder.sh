@@ -2,14 +2,18 @@
 
 set -e
 
-export LD_LIBRARY_PATH=/vial-gui/util/python36/prefix/lib/
-
 cd /vial-gui
-./util/python36/prefix/bin/python3 -m venv docker_venv
+python3 -m venv docker_venv
 . docker_venv/bin/activate
+python -m pip install --upgrade pip
 pip install -r requirements.txt
-fbs freeze
-fbs installer
+pyinstaller misc/Vial.spec
+
+cp src/main/icons/linux/1024.png dist/Vial/Vial.png
+cp misc/Vial.desktop dist/Vial/
+cp misc/AppRun dist/Vial/
+chmod +x dist/Vial/AppRun
+
 deactivate
-/pkg2appimage-*/pkg2appimage misc/Vial.yml
-mv out/Vial-*.AppImage /output/Vial-x86_64.AppImage
+/appimagetool-x86_64.AppImage dist/Vial
+mv Vial-x86_64.AppImage /output/Vial-x86_64.AppImage
